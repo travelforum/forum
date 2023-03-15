@@ -1,5 +1,4 @@
 import { LoremIpsum } from "lorem-ipsum";
-// const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -12,6 +11,17 @@ const lorem = new LoremIpsum({
   },
 });
 
-export default function fillerText(nParagraphs = 1) {
-  return lorem.generateParagraphs(nParagraphs);
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+}
+
+export function getPosts() {
+  return Array.from({ length: 10 }, (_, i) => ({
+    id: i,
+    title: toTitleCase(lorem.generateWords(3)),
+    body: lorem.generateParagraphs(2),
+  }));
 }

@@ -1,6 +1,16 @@
-import { Text } from "@chakra-ui/react";
-import fillerText from "../data";
+import { Box, Heading, Text } from "@chakra-ui/react";
+import { getPosts } from "../data";
 
+const posts = getPosts();
 export default function Home() {
-  return <Text>{fillerText(4)}</Text>;
+  return (
+    <Box>
+      {posts.map((post) => (
+        <Box>
+          <Heading key={post.id}>{post.title}</Heading>
+          <Text>{post.body}</Text>
+        </Box>
+      ))}
+    </Box>
+  );
 }
