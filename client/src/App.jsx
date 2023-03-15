@@ -16,7 +16,7 @@ export default function App() {
         color="#eee"
         backgroundImage="travel.jpg"
         backgroundSize="cover"
-        h="100dvh"
+        minH="100dvh"
       >
         <Nav />
         <Box mt={4} bg="#0008">
