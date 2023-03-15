@@ -1,5 +1,5 @@
-import { Text } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 export default function Chat() {
-  return <Text>Chat</Text>;
+  return <Heading>Chat</Heading>;
 }

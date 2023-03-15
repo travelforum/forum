@@ -1,5 +1,5 @@
-import { Text } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 export default function About() {
-  return <Text>About</Text>;
+  return <Heading>About</Heading>;
 }

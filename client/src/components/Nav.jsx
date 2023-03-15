@@ -9,7 +9,6 @@ function MyLink({ to, children }) {
       w="100%"
       textTransform="uppercase"
       textDecoration={isCurrentPage ? "underline" : "none"}
-      color="#eee"
     >
       <Link href={to}>{children}</Link>
     </Center>
@@ -18,7 +17,7 @@ function MyLink({ to, children }) {
 
 export default function Nav() {
   return (
-    <HStack p={4}>
+    <HStack>
       <MyLink to="/">Home</MyLink>
       <MyLink to="/chat">Chat</MyLink>
       <MyLink to="/about">Quem Somos</MyLink>
