@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Chat from "./components/Chat";
 import About from "./components/About";
+import NewPost from "./components/NewPost";
 import Nav from "./components/Nav";
 import NotFound from "./components/NotFound";
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
       <Box
         p={4}
         color="#eee"
-        backgroundImage="travel.jpg"
+        backgroundImage="/images/travel.jpg"
         backgroundSize="cover"
         minH="100dvh"
       >
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/about" element={<About />} />
+              <Route path="/post/new" element={<NewPost />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

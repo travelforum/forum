@@ -21,6 +21,7 @@ export default function Nav() {
       <MyLink to="/">Home</MyLink>
       <MyLink to="/chat">Chat</MyLink>
       <MyLink to="/about">Quem Somos</MyLink>
+      <MyLink to="/post/new">Novo Tópico</MyLink>
     </HStack>
   );
 }
