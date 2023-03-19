@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const { v4: uuidv4 } = require("uuid");
+const dotenv = require("dotenv");
+const { mongoCreatePost } = require("./forumCrud");
+dotenv.config();
 
 const app = express();
 const PORT = 4000;
@@ -21,12 +23,21 @@ app.listen(PORT, () => {
 
 // create post in the forum
 app.post("/api/post", (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, image, user } = req.body;
   const newPost = {
-    id: uuidv4(),
     title,
     content,
+    user,
   };
-  posts.push(newPost);
-  res.json(posts);
+
+  if (image) {
+    newPost.image = image;
+  }
+
+  mongoCreatePost(newPost);
+
+  res.json({
+    message: "Post created",
+    post: newPost,
+  });
 });

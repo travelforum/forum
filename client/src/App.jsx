@@ -20,7 +20,7 @@ export default function App() {
         minH="100dvh"
       >
         <Nav />
-        <Box mt={4} bg="#0008">
+        <Box mt={4} bg="#0008" position="relative">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
