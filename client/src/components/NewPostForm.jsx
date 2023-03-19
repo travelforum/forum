@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { FiFile, FiTrash } from "react-icons/fi";
+import { createNewPost } from "../api/createNewPost";
 import FileUpload from "./FileUpload";
 
 function ImagePreview(props) {
@@ -32,43 +33,7 @@ export default function NewPostForm() {
     reset,
   } = useForm();
 
-  function getUser() {
-    const user = localStorage.getItem("user");
-    if (user) return JSON.parse(user);
-
-    const newUser = {
-      name: "Test User",
-      email: "test@example.com",
-      photo: "https://api.dicebear.com/5.x/fun-emoji/svg?seed=TestUser",
-    };
-
-    localStorage.setItem("user", JSON.stringify(newUser));
-    return newUser;
-  }
-
-  function createNewPost({ title, content, image }) {
-    const baseURL = "http://localhost:4000";
-    const url = "/api/post";
-    const user = getUser();
-    const data = { title, content, image, user };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-    fetch(baseURL + url, options)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // reload page
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
-  }
   const onSubmit = handleSubmit((data) => {
-    console.log("On Submit: ", data);
     createNewPost(data);
   });
 
