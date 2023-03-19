@@ -1,5 +1,4 @@
-const { MongoClient } = require("mongodb");
-
+const { MongoClient, ObjectId } = require("mongodb");
 async function connectToCluster(uri) {
   let mongoClient;
 
@@ -72,7 +71,31 @@ async function mongoGetPosts() {
   }
 }
 
+async function getDocumentById(collection, postId) {
+  console.log("postId getDocumentById", postId);
+  const query = { _id: new ObjectId(postId) };
+  return await collection.findOne(query);
+}
+
+async function mongoGetPostById(postId) {
+  const uri = process.env.DB_URI;
+  let mongoClient;
+
+  try {
+    mongoClient = await connectToCluster(uri);
+    const db = mongoClient.db("forum");
+    const collection = db.collection("posts");
+
+    console.log("GET post by id");
+    const post = await getDocumentById(collection, postId);
+    return post;
+  } finally {
+    await mongoClient.close();
+  }
+}
+
 module.exports = {
   mongoCreatePost,
   mongoGetPosts,
+  mongoGetPostById,
 };

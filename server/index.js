@@ -1,7 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { mongoCreatePost, mongoGetPosts } = require("./forumCrud");
+const {
+  mongoCreatePost,
+  mongoGetPosts,
+  mongoGetPostById,
+} = require("./forumCrud");
 dotenv.config();
 
 const app = express();
@@ -45,4 +49,11 @@ app.post("/api/post", (req, res) => {
 app.get("/api/post", async (req, res) => {
   const posts = await mongoGetPosts();
   res.json(posts);
+});
+
+app.get("/api/post/:postId", async (req, res) => {
+  console.log("req", req);
+  const { postId } = req.params;
+  const post = await mongoGetPostById(postId);
+  res.json(post);
 });
