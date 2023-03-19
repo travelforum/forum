@@ -31,6 +31,15 @@ async function mongoCreatePost(data) {
   }
 }
 
+async function getAllPostDocuments(collection) {
+  const query = {};
+  const options = {
+    sort: { _id: -1 },
+  };
+
+  return await collection.find(query, options).toArray();
+}
+
 async function createPostDocument(collection, postDocument) {
   // const postDocument = {
   //   title: "Hello World",
@@ -46,6 +55,24 @@ async function createPostDocument(collection, postDocument) {
   await collection.insertOne(postDocument);
 }
 
+async function mongoGetPosts() {
+  const uri = process.env.DB_URI;
+  let mongoClient;
+
+  try {
+    mongoClient = await connectToCluster(uri);
+    const db = mongoClient.db("forum");
+    const collection = db.collection("posts");
+
+    console.log("GET posts");
+    const posts = await getAllPostDocuments(collection);
+    return posts;
+  } finally {
+    await mongoClient.close();
+  }
+}
+
 module.exports = {
   mongoCreatePost,
+  mongoGetPosts,
 };

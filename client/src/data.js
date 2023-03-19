@@ -22,6 +22,6 @@ export function getPosts() {
   return Array.from({ length: 10 }, (_, i) => ({
     id: i,
     title: toTitleCase(lorem.generateWords(3)),
-    body: lorem.generateParagraphs(2),
+    content: lorem.generateParagraphs(2),
   }));
 }

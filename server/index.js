@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { mongoCreatePost } = require("./forumCrud");
+const { mongoCreatePost, mongoGetPosts } = require("./forumCrud");
 dotenv.config();
 
 const app = express();
@@ -40,4 +40,9 @@ app.post("/api/post", (req, res) => {
     message: "Post created",
     post: newPost,
   });
+});
+
+app.get("/api/post", async (req, res) => {
+  const posts = await mongoGetPosts();
+  res.json(posts);
 });

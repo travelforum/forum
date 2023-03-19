@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { FiFile, FiTrash } from "react-icons/fi";
-import { createNewPost } from "../api/createNewPost";
+import createNewPost from "../api/createNewPost";
 import FileUpload from "./FileUpload";
 
 function ImagePreview(props) {
