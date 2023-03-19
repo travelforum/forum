@@ -19,7 +19,7 @@ function ImagePreview(props) {
       src={URL.createObjectURL(props.file)}
       alt="preview image"
       maxW={"100%"}
-      maxH={"100px"}
+      maxH={"200px"}
     />
   );
 }
@@ -54,43 +54,6 @@ export default function NewPostForm() {
   return (
     <chakra.form onSubmit={onSubmit}>
       <VStack spacing={4} align="flex-start">
-        <FormControl isInvalid={!!errors.file_} isRequired>
-          <FormLabel>{"Imagem"}</FormLabel>
-
-          {!file ? (
-            <FileUpload
-              accept={"image/*"}
-              register={register("file_", { validate: validateFile })}
-            >
-              <Button colorScheme="teal" leftIcon={<Icon as={FiFile} />}>
-                Carregar
-              </Button>
-            </FileUpload>
-          ) : (
-            <Button
-              colorScheme="teal"
-              leftIcon={<Icon as={FiTrash} />}
-              onClick={() => {
-                reset({ file_: null });
-              }}
-            >
-              Remover
-            </Button>
-          )}
-
-          <FormErrorMessage>
-            {errors.file_ && errors?.file_.message}
-          </FormErrorMessage>
-        </FormControl>
-
-        {!!file && (
-          <ImagePreview
-            src={URL.createObjectURL(file)}
-            alt="preview"
-            file={file}
-          />
-        )}
-
         <FormControl isInvalid={!!errors.title} isRequired>
           <FormLabel>{"Título"}</FormLabel>
           <chakra.input
@@ -118,6 +81,43 @@ export default function NewPostForm() {
           />
           <FormErrorMessage>
             {errors.content && errors?.content.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.file_} isRequired>
+          <VStack spacing={4} align="flex-start">
+            {!file ? (
+              <FileUpload
+                accept={"image/*"}
+                register={register("file_", { validate: validateFile })}
+              >
+                <Button colorScheme="teal" leftIcon={<Icon as={FiFile} />}>
+                  Adicionar imagem
+                </Button>
+              </FileUpload>
+            ) : (
+              <Button
+                colorScheme="teal"
+                leftIcon={<Icon as={FiTrash} />}
+                onClick={() => {
+                  reset({ file_: null });
+                }}
+              >
+                Remover imagem
+              </Button>
+            )}
+
+            {!!file && (
+              <ImagePreview
+                src={URL.createObjectURL(file)}
+                alt="preview"
+                file={file}
+              />
+            )}
+          </VStack>
+
+          <FormErrorMessage>
+            {errors.file_ && errors?.file_.message}
           </FormErrorMessage>
         </FormControl>
 

@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <Box>
-      <VStack overflow="initial" px={4}>
+      <VStack overflow="initial" px={4} alignItems="flex-start">
         {posts?.map(({ _id, title, content }) => (
           <Link key={_id} href={`/post/${_id}`}>
             <Post title={title} body={content} />

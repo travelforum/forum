@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Chat from "./components/Chat";
 import About from "./components/About";
-import NewPost from "./components/NewPost";
 import Nav from "./components/Nav";
 import NotFound from "./components/NotFound";
 import PostView from "./components/PostView";
@@ -27,7 +26,6 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/about" element={<About />} />
-              <Route path="/post/new" element={<NewPost />} />
               <Route path="/post/:id" element={<PostView />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
