@@ -2,14 +2,12 @@
 
 Built with React, NodeJS and MongoDB.
 
+Homepage: https://github.com/travelforum/forum
+
 See also: https://github.com/atsocs/chat
 
 # Running the app
-Open two terminals, and then:
-```cd client && npm start```
-in one terminal and
-```cd server && npm start```
-in the other.
+Run `npm start` in two separate terminals, one in the `client` directory and the other in the `server` directory.
 
 # Backlog
 - in-forum chat using web sockets
