@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Image, Spinner } from "@chakra-ui/react";
+import { Box, Center, Heading, Image, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getPost from "../api/getPost";
@@ -27,15 +27,12 @@ export default function PostView() {
     );
   }
 
-  const { title, content, image } = post;
+  const { title, content } = post;
+  const authorName = post.user.name;
   return (
     <Box>
       <Heading>{title}</Heading>
-      {image && (
-        <Box>
-          <Image src={image} />
-        </Box>
-      )}
+      <Text fontStyle="italic">Por {authorName}</Text>
       <Box>{content}</Box>
     </Box>
   );

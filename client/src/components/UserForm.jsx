@@ -22,7 +22,7 @@ export default function UserForm() {
     setUser({
       name,
       email,
-      photo: `https://api.dicebear.com/5.x/fun-emoji/svg?seed=${email}`,
+      photo: `https://api.dicebear.com/5.x/identicon/svg?seed=${email}`,
     });
     // go to homepage
     window.location.href = "/";
