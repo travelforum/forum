@@ -1,5 +1,4 @@
 import { Avatar, Center, HStack, Link, Text } from "@chakra-ui/react";
-import { useMemo } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 function MyLink({ to, children, ...props }) {
