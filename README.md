@@ -16,3 +16,7 @@ Run `npm start` in two separate terminals, one in the `client` directory and the
 - comments in posts
 - deployment
 
+# PrintScreen
+![image](https://user-images.githubusercontent.com/128334546/226226991-25514611-f4fc-4324-8ef0-db317b76cb0c.png)
+
+
