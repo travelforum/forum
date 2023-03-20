@@ -5,6 +5,7 @@ import PlusButton from "./PlusButton";
 
 export default function NewPost() {
   const [isOpen, setIsOpen] = useState(false);
+
   if (isOpen)
     return (
       <Box bgColor={"teal.600"} p={4} mb={10} rounded="5%" w={600}>

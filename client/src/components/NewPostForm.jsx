@@ -7,10 +7,14 @@ import {
   chakra,
   VStack,
   Image,
+  Text,
+  HStack,
+  Spacer,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { FiFile, FiTrash } from "react-icons/fi";
 import createNewPost from "../api/createNewPost";
+import { loadUser } from "../api/user";
 import FileUpload from "./FileUpload";
 
 function ImagePreview(props) {
@@ -25,6 +29,9 @@ function ImagePreview(props) {
 }
 
 export default function NewPostForm() {
+  const user = loadUser();
+  const hasUser = !!user;
+
   const {
     register,
     handleSubmit,
@@ -32,6 +39,22 @@ export default function NewPostForm() {
     watch,
     reset,
   } = useForm();
+
+  if (!hasUser)
+    return (
+      <HStack>
+        <Text>Para criar um novo tópico, você precisa estar logado</Text>
+        <Spacer />
+        <Button
+          colorScheme="teal"
+          onClick={() => {
+            window.location.href = "/login";
+          }}
+        >
+          Login
+        </Button>
+      </HStack>
+    );
 
   const onSubmit = handleSubmit((data) => {
     createNewPost(data);
@@ -122,7 +145,7 @@ export default function NewPostForm() {
         </FormControl>
 
         <Button colorScheme="teal" type={"submit"} alignSelf="flex-end">
-          Submit
+          Enviar
         </Button>
       </VStack>
     </chakra.form>

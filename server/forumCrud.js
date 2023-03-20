@@ -72,7 +72,6 @@ async function mongoGetPosts() {
 }
 
 async function getDocumentById(collection, postId) {
-  console.log("postId getDocumentById", postId);
   const query = { _id: new ObjectId(postId) };
   return await collection.findOne(query);
 }

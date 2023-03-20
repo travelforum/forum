@@ -52,7 +52,6 @@ app.get("/api/post", async (req, res) => {
 });
 
 app.get("/api/post/:postId", async (req, res) => {
-  console.log("req", req);
   const { postId } = req.params;
   const post = await mongoGetPostById(postId);
   res.json(post);

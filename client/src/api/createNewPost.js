@@ -1,9 +1,9 @@
-import getUser from "./getUser";
+import { loadUser } from "./user";
 
 export default function createNewPost({ title, content, image }) {
   const baseURL = "http://localhost:4000";
   const url = "/api/post";
-  const user = getUser();
+  const user = loadUser();
   const data = { title, content, image, user };
   const options = {
     method: "POST",

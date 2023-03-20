@@ -3,11 +3,16 @@ import NewPost from "./NewPost";
 import { Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-function Post({ title, body }) {
+function Post({ post }) {
+  const { title, content } = post;
+
+  const authorName = post.user.name;
+
   return (
-    <Box pt={4} _hover={{ textDecoration: "none", textColor: "#99cfe0" }}>
+    <Box _hover={{ textDecoration: "none", textColor: "#99cfe0" }}>
       <Heading>{title}</Heading>
-      <Text>{body}</Text>
+      <Text fontStyle="italic">Por {authorName}</Text>
+      <Text>{content}</Text>
     </Box>
   );
 }
@@ -46,10 +51,16 @@ export default function Home() {
 
   return (
     <Box>
-      <VStack overflow="initial" px={4} alignItems="flex-start">
-        {posts?.map(({ _id, title, content }) => (
-          <Link key={_id} href={`/post/${_id}`}>
-            <Post title={title} body={content} />
+      <VStack
+        overflow="initial"
+        alignItems="flex-start"
+        spacing={4}
+        p={4}
+        pt={0}
+      >
+        {posts.map((post) => (
+          <Link key={post._id} href={`/post/${post._id}`}>
+            <Post post={post} />
           </Link>
         ))}
       </VStack>

@@ -8,6 +8,8 @@ import About from "./components/About";
 import Nav from "./components/Nav";
 import NotFound from "./components/NotFound";
 import PostView from "./components/PostView";
+import Login from "./components/Login";
+import Logout from "./components/Logout.jsx";
 export default function App() {
   return (
     <ChakraProvider>
@@ -26,6 +28,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/chat" element={<Chat />} />
               <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
               <Route path="/post/:id" element={<PostView />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
